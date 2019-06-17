@@ -31,6 +31,8 @@ string _local_data_path;
 
 struct file_info{
 
+  int id;
+
 	string img_date;
 	string img_camera_id;
 
@@ -38,6 +40,13 @@ struct file_info{
 	string scan_col;
 	string image_row;
 	string image_col;
+
+};
+
+struct sequence_info{
+
+	string name;
+  int location;
 
 };
 
@@ -66,6 +75,8 @@ private: //Only accessable for this class members.
 	// Parameters
 	vector<const char*>_content;
 	vector<file_info>_corr_info;
+  vector<sequence_info>_sequence_info_vec;
+  int _search_start, _search_end;
 
 	stringstream file_name;
 	stringstream temp_name;
@@ -74,14 +85,14 @@ private: //Only accessable for this class members.
 
 	Mat _current_img;
 
-	file_info _file_info;
+
 	string str;
 	//
 
 
 	// functions ??
-	void find_img_and_copy(string img_date, string img_camera_id);
-  void sear_coordinates(vector<file_info>corr_info);
+	void find_img_and_copy(vector<file_info> info);
+  void sear_coordinates(vector<file_info> corr_info);
 
 
 };
